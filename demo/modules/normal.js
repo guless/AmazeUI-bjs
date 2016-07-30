@@ -6,8 +6,6 @@
 
 	app.controller('normal', ['$view', '$site', function($view, $site){
 
-		// console.log('normal ok');
-
 		var _nums = $view.nums = $site.block({
 			newPage: 2300,
 			order: 308,
@@ -18,7 +16,7 @@
 				this.order += parseInt(1 + Math.random()*100);
 				this.visit += parseInt(10 + Math.random()*1000);
 				this.online += parseInt(2 + Math.random()*100);
-				setTimeout(function(){_nums.increase()}, parseInt(10 + Math.random()*1000))
+				setTimeout(function(){ $view.bgIsDispose || _nums.increase()}, parseInt(10 + Math.random()*1000))
 			},
 			$ready: function(){
 				this.increase();
@@ -45,16 +43,16 @@
 				bingo.each(_table.browsers, function(item){
 					item.count += parseInt(3 + Math.random()*30);
 				});
-				setTimeout(function(){_table.increaseBrowse()}, parseInt(10 + Math.random()*1000))
+				setTimeout(function(){$view.bgIsDispose ||_table.increaseBrowse()}, parseInt(10 + Math.random()*1000))
 			}
 		});
 
 		var _other = $view.other = $site.block({
-			progress:82,
+			progress:0,
 			increase:function(){
 				this.progress += parseInt(1 + Math.random()*10);
 				this.progress %= 100;
-				setTimeout(function(){_other.increase()}, parseInt(10 + Math.random()*1000))
+				setTimeout(function(){$view.bgIsDispose ||_other.increase()}, parseInt(10 + Math.random()*1000))
 			},
 			$ready:function(){
 				this.increase();

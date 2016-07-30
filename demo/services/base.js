@@ -31,6 +31,39 @@
 			},
 			ajax:function(url, p){
 				return app.ajax(url, bingo.extend({dataType:'json'}, p));
+			},
+			mainView: function() {
+				return bingo.app('demo').view('main');
+			},
+			mainRoute: function() {
+				return _app.mainView().mainRoute
+			},
+			open:function(url, params){
+				var _cp = null,
+					_page = {
+						bgNoObserve: true,
+						params: params,
+						receive: function(callback) {
+							this.bgOn('receive', callback);
+							return this;
+						},
+						send: function(p) {
+							this.bgTrigger('receive', arguments);
+							return this;
+						}
+					}; //end _page
+
+				App.open(url, ['$view', function($pageView) {
+					$pageView.__page_ = _page;
+				}]);
+				return _page;
+			},
+			page: function() {
+				return $view.__page_;
+			},
+			params: function(defaultValue) {
+				var page = this.page();
+				return bingo.extend(defaultValue || {}, page && page.params);
 			}
 		};
 
