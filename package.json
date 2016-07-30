@@ -1,0 +1,29 @@
+{
+  "name": "AmazeUI-bjs",
+  "version": "1.0.0",
+  "description": "front MV",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guless/bingoJS2.git"
+  },
+  "homepage": "https://github.com/guless/bingoJS2",
+  "bugs": {
+    "url": "https://github.com/guless/bingoJS2/issues"
+  },
+  "keywords": [
+    "bingojs",
+    "mv"
+  ],
+  "author": "bingojs team",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.12.7",
+    "browser-sync-ui": "^0.5.19",
+    "gulp": "^3.9.1"
+  }
+}
