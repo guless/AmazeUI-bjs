@@ -1,0 +1,16 @@
+{{tmpl id="pagebar" for="app"}}
+  {{view /}}
+  <ul class="am-pagination am-fr admin-content-pagination">
+    <li>
+      <a href="javascript:;" onclick="[[setPage(curPage-1)]]">&laquo;</a>
+    </li>
+    {{for item in pages}}
+    <li class="[[curPage == item ? 'am-active' : '']]">
+      <a href="javascript:;" onclick="[[curPage = item]]">{{text item /}}</a>
+    </li>
+    {{/for}}
+    <li>
+      <a href="javascript:;" onclick="[[setPage(curPage+1)]]">&raquo;</a>
+    </li>
+  </ul>
+{{/tmpl}}

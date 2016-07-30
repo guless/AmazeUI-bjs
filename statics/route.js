@@ -108,7 +108,7 @@
 	app.route('ajax', {
 		type: 'ajax',
 		url: '{ajax*}',
-		toUrl: '{ajax*}',
+		toUrl: 'api/{ajax*}.json',
 		defaultValue: {
 			ajax: ''
 		}

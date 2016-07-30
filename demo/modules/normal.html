@@ -1,5 +1,5 @@
 {{view controller="normal" app="demo" /}}
-<div class="admin-content-body">
+<div class="admin-content-body page-content">
   <div class="am-cf am-padding">
     <div class="am-fl am-cf"> <strong class="am-text-primary am-text-lg">首页</strong>
       /
@@ -14,7 +14,7 @@
         <br/>
         新增页面
         <br/>
-        2300
+        {{text nums.newPage /}}
       </a>
     </li>
     <li>
@@ -23,7 +23,7 @@
         <br/>
         成交订单
         <br/>
-        308
+        {{text nums.order /}}
       </a>
     </li>
     <li>
@@ -32,7 +32,7 @@
         <br/>
         昨日访问
         <br/>
-        80082
+        {{text nums.visit /}}
       </a>
     </li>
     <li>
@@ -41,7 +41,7 @@
         <br/>
         在线用户
         <br/>
-        3000
+        {{text nums.online /}}
       </a>
     </li>
   </ul>
@@ -59,14 +59,15 @@
           </tr>
         </thead>
         <tbody>
+          {{for item in pagebar1.curDatas}}
           <tr>
-            <td>1</td>
-            <td>John Clark</td>
+            <td>{{text item.id /}}</td>
+            <td>{{text item.name /}}</td>
             <td>
-              <a href="#">Business management</a>
+              <a href="javascript:;">{{text item.desc /}}</a>
             </td>
             <td>
-              <span class="am-badge am-badge-success">+20</span>
+              <span class="am-badge[[item.type ? ' am-badge-' + item.type : '']]">{{text item.order /}}</span>
             </td>
             <td>
               <div class="am-dropdown" data-am-dropdown>
@@ -75,138 +76,23 @@
                   <span class="am-icon-caret-down"></span>
                 </button>
                 <ul class="am-dropdown-content">
-                  <li>
-                    <a href="#">1. 编辑</a>
+                  <li class="am-disabled">
+                    <a href="javascript:;">1. 编辑</a>
+                  </li>
+                  <li class="am-disabled">
+                    <a href="javascript:;">2. 下载</a>
                   </li>
                   <li>
-                    <a href="#">2. 下载</a>
-                  </li>
-                  <li>
-                    <a href="#">3. 删除</a>
-                  </li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>风清扬</td>
-            <td>
-              <a href="#">公司LOGO设计</a>
-            </td>
-            <td>
-              <span class="am-badge am-badge-danger">+2</span>
-            </td>
-            <td>
-              <div class="am-dropdown" data-am-dropdown>
-                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
-                  <span class="am-icon-cog"></span>
-                  <span class="am-icon-caret-down"></span>
-                </button>
-                <ul class="am-dropdown-content">
-                  <li>
-                    <a href="#">1. 编辑</a>
-                  </li>
-                  <li>
-                    <a href="#">2. 下载</a>
-                  </li>
-                  <li>
-                    <a href="#">3. 删除</a>
+                    <a href="javascript:;" onclick="[[table.delItem(item)]]">3. 删除</a>
                   </li>
                 </ul>
               </div>
             </td>
           </tr>
-          <tr>
-            <td>3</td>
-            <td>詹姆斯</td>
-            <td>
-              <a href="#">开发一款业务数据软件</a>
-            </td>
-            <td>
-              <span class="am-badge am-badge-warning">+10</span>
-            </td>
-            <td>
-              <div class="am-dropdown" data-am-dropdown>
-                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
-                  <span class="am-icon-cog"></span>
-                  <span class="am-icon-caret-down"></span>
-                </button>
-                <ul class="am-dropdown-content">
-                  <li>
-                    <a href="#">1. 编辑</a>
-                  </li>
-                  <li>
-                    <a href="#">2. 下载</a>
-                  </li>
-                  <li>
-                    <a href="#">3. 删除</a>
-                  </li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>云适配</td>
-            <td>
-              <a href="#">适配所有网站</a>
-            </td>
-            <td>
-              <span class="am-badge am-badge-secondary">+50</span>
-            </td>
-            <td>
-              <div class="am-dropdown" data-am-dropdown>
-                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
-                  <span class="am-icon-cog"></span>
-                  <span class="am-icon-caret-down"></span>
-                </button>
-                <ul class="am-dropdown-content">
-                  <li>
-                    <a href="#">1. 编辑</a>
-                  </li>
-                  <li>
-                    <a href="#">2. 下载</a>
-                  </li>
-                  <li>
-                    <a href="#">3. 删除</a>
-                  </li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td>5</td>
-            <td>呵呵呵</td>
-            <td>
-              <a href="#">基兰会获得BUFF</a>
-            </td>
-            <td>
-              <span class="am-badge">+22</span>
-            </td>
-            <td>
-              <div class="am-dropdown" data-am-dropdown>
-                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle>
-                  <span class="am-icon-cog"></span>
-                  <span class="am-icon-caret-down"></span>
-                </button>
-                <ul class="am-dropdown-content">
-                  <li>
-                    <a href="#">1. 编辑</a>
-                  </li>
-                  <li>
-                    <a href="#">2. 下载</a>
-                  </li>
-                  <li>
-                    <a href="#">3. 删除</a>
-                  </li>
-                </ul>
-              </div>
-            </td>
-          </tr>
+          {{/for}}
         </tbody>
       </table>
+      {{pagebar name="pagebar1" /}}
     </div>
   </div>
 
@@ -223,7 +109,7 @@
                 Kong-cetian.Mp3</strong> 
               <p>3.3 of 5MB - 5 mins - 1MB/Sec</p>
               <div class="am-progress am-progress-striped am-progress-sm am-active">
-                <div class="am-progress-bar am-progress-bar-success" style="width: 82%">82%</div>
+                <div class="am-progress-bar am-progress-bar-success" style="width: [[other.progress]]%">{{text other.progress /}}%</div>
               </div>
             </li>
             <li>
@@ -254,36 +140,14 @@
                 <th>浏览器</th>
                 <th>访问量</th>
               </tr>
+              {{for item in table.browsers}}
               <tr>
                 <td class="am-text-center">
-                  <img src="../statics/AmazeUI/i/examples/admin-chrome.png" alt=""></td>
-                <td>Google Chrome</td>
-                <td>3,005</td>
+                  <img src="[[item.icon]]" alt=""></td>
+                <td>{{text item.name /}}</td>
+                <td>{{text item.count /}}</td>
               </tr>
-              <tr>
-                <td class="am-text-center">
-                  <img src="../statics/AmazeUI/i/examples/admin-firefox.png" alt=""></td>
-                <td>Mozilla Firefox</td>
-                <td>2,505</td>
-              </tr>
-              <tr>
-                <td class="am-text-center">
-                  <img src="../statics/AmazeUI/i/examples/admin-ie.png" alt=""></td>
-                <td>Internet Explorer</td>
-                <td>1,405</td>
-              </tr>
-              <tr>
-                <td class="am-text-center">
-                  <img src="../statics/AmazeUI/i/examples/admin-opera.png" alt=""></td>
-                <td>Opera</td>
-                <td>4,005</td>
-              </tr>
-              <tr>
-                <td class="am-text-center">
-                  <img src="../statics/AmazeUI/i/examples/admin-safari.png" alt=""></td>
-                <td>Safari</td>
-                <td>505</td>
-              </tr>
+              {{/for}}
             </tbody>
           </table>
         </div>
@@ -394,29 +258,7 @@
             </li>
 
           </ul>
-          <ul class="am-pagination am-fr admin-content-pagination">
-            <li class="am-disabled">
-              <a href="#">&laquo;</a>
-            </li>
-            <li class="am-active">
-              <a href="#">1</a>
-            </li>
-            <li>
-              <a href="#">2</a>
-            </li>
-            <li>
-              <a href="#">3</a>
-            </li>
-            <li>
-              <a href="#">4</a>
-            </li>
-            <li>
-              <a href="#">5</a>
-            </li>
-            <li>
-              <a href="#">&raquo;</a>
-            </li>
-          </ul>
+          {{pagebar name="pagebar2" /}}
         </div>
       </div>
     </div>

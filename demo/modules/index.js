@@ -6,7 +6,7 @@
 
 	app.controller('index', ['$view', '$site', function($view, $site){
 
-		console.log('index ok', $view);
+		// console.log('index ok', $view);
 
 	}]);
 
