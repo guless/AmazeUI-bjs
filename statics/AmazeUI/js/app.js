@@ -22,6 +22,7 @@
       open:function(url, ctrl){
         try{
           _opening = true;
+          location.hash = 'np='+url;
          return _app.mainRoute().href(url, ctrl);
         } finally{
           _opening = false;

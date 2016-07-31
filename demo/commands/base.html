@@ -1,16 +1,88 @@
 {{tmpl id="pagebar" for="app"}}
   {{view /}}
-  <ul class="am-pagination am-fr admin-content-pagination">
-    <li>
-      <a href="javascript:;" onclick="[[setPage(curPage-1)]]">&laquo;</a>
-    </li>
-    {{for item in pages}}
-    <li class="[[curPage == item ? 'am-active' : '']]">
-      <a href="javascript:;" onclick="[[curPage = item]]">{{text item /}}</a>
-    </li>
+  {{if type == 0}}
+    <ul class="am-pagination am-fr admin-content-pagination">
+      <li>
+        <a href="javascript:;" onclick="[[setPage(curPage-1)]]">&laquo;</a>
+      </li>
+      {{for item in pages}}
+      <li class="[[curPage == item ? 'am-active' : '']]">
+        <a href="javascript:;" onclick="[[curPage = item]]">{{text item /}}</a>
+      </li>
+      {{/for}}
+      <li>
+        <a href="javascript:;" onclick="[[setPage(curPage+1)]]">&raquo;</a>
+      </li>
+    </ul>
+  {{else}}
+    <div class="am-cf">
+      <p class="am-fl">共 {{text total /}} 条记录</p>
+      <div class="am-fr">
+        <ul class="am-pagination">
+          <li>
+            <a href="javascript:;" onclick="[[setPage(curPage-1)]]">&laquo;</a>
+          </li>
+          {{for item in pages}}
+          <li class="[[curPage == item ? 'am-active' : '']]">
+            <a href="javascript:;" onclick="[[curPage = item]]">{{text item /}}</a>
+          </li>
+          {{/for}}
+          <li>
+            <a href="javascript:;" onclick="[[setPage(curPage+1)]]">&raquo;</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   {{/if}}
+{{/tmpl}}
+
+{{tmpl id="table" for="app"}}
+  {{view /}}
+  <table class="am-table am-table-striped am-table-hover table-main">
+    <thead>
+    <tr>
+      <th class="table-check"><input type="checkbox" /></th>
+      {{for item in column}}
+      <th class="table-title">{{text item.title /}}</th>
+      {{/for}}
+    </tr>
+    </thead>
+    <tbody>
+    {{for row in pagebar.curDatas}}
+    <tr>
+      <td><input type="checkbox" /></td>
+      {{for col in column}}
+        {{if col.formatter}}
+        <td>{{html col.formatter(row[col.name], col, row) /}}</td>
+        {{else}}
+        <td>{{text row[col.name] /}}</td>
+        {{/if}}
+      {{/for}}
+    </tr>
     {{/for}}
-    <li>
-      <a href="javascript:;" onclick="[[setPage(curPage+1)]]">&raquo;</a>
-    </li>
-  </ul>
+    </tbody>
+  </table>
+  {{pagebar name="pagebar" /}}
+{{/tmpl}}
+
+{{tmpl id="select" for="app"}}
+  {{view /}}
+  <div class="am-btn-group" data-am-button>
+    {{for item in datas}}
+    <label class="am-btn am-btn-default am-btn-xs[[model == item.value?' am-active':'']]"
+      onclick="[[model = item.value]]">
+      <input type="radio" name="options">{{text item.text /}}</label>
+    {{/for}}
+  </div>
+{{/tmpl}}
+
+{{tmpl id="mselect" for="app"}}
+  {{view /}}
+  <div class="am-btn-group" data-am-button>
+    {{for item in datas}}
+    <label class="am-btn am-btn-default am-btn-xs[[has(item.value)?' am-active':'']]"
+      onclick="[[setValue(item.value)]]">
+      <input type="checkbox"> {{text item.text /}}</label>
+    {{/for}}
+  </div>
 {{/tmpl}}

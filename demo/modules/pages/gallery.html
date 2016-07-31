@@ -1,0 +1,25 @@
+{{view controller="pages/gallery" app="demo" /}}
+<div class="admin-content-body">
+  <div class="am-cf am-padding am-padding-bottom-0">
+    <div class="am-fl am-cf">
+      <strong class="am-text-primary am-text-lg">相册</strong> / <small>Gallery</small>
+    </div>
+  </div>
+
+  <hr>
+
+  <ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
+    {{for item in gallery.list}}
+    <li>
+      <a href="#">
+        <img class="am-img-thumbnail am-img-bdrs" src="[[item.src]]" alt=""/>
+        <div class="gallery-title">{{text item.desc /}}</div>
+        <div class="gallery-desc">{{text item.date /}}</div>
+      </a>
+    </li>
+    {{/for}}
+  </ul>
+
+  <hr/>
+  {{pagebar name="pagebar1" /}}
+</div>

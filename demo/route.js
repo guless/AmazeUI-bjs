@@ -55,6 +55,8 @@
 		type: 'command',
 		url: '{command*}',
 		toUrl: '{command*}',
+		//如果{{select /}} , 加载commands/base.js(里面存放基础指令)
+		//如果{{index/footer /}} , 加载commands/index.js(里面存放index相关指令)
 		promise: function(url, p, context){
 
 			var cUrl = context.url,
@@ -63,10 +65,10 @@
 				cmdType = hasType ? l[0] : 'base',
 				tmplid = hasType ? l[1] : cUrl;
 
-			//如 route url: index:sidebar
-			//类型(type)为: index
+			//如 route url: index/sidebar
+			//类型(type)为: index, 如果空为base
 			//url==> commands/index.js
-			url = ['pass::commands', cmdType].join('/');
+			url = ['pass::commands', cmdType].join('/');//使用pass路由直接转发
 			url += '.js';
 
 			return app.using(url);
@@ -80,6 +82,8 @@
 	app.route('cmdtmpl', {
 		type: 'cmdtmpl',
 		url: '{cmdtmpl*}',
+		//如果{{select /}} , 加载commands/base.html(里面存放基础指令模板)
+		//如果{{index/footer /}} , 加载commands/index.html(里面存放index相关指令模板)
 		promise: function(url, p, context){
 
 			var cUrl = context.url,
@@ -87,16 +91,15 @@
 			    hasType  = l.length > 1,
 				cmdType = hasType ? l[0] : 'base';
 
-			//如 route url: index:sidebar
-			//类型(type)为: index
-
+			//如 route url: index/sidebar
+			//类型(type)为: index, 如果空为base
 
 			//url==> commands/index.html
-			url = ['pass::commands', cmdType].join('/');
+			url = ['pass::commands', cmdType].join('/');//使用pass路由直接转发
 			url += '.html';
 
 			//tmplid: index:sidebar
-			//最终结果是: 加载commands/index.html文件中的index:sidebar模板
+			//最终结果是: 加载commands/index.html文件中id="index/sidebar"模板
 			return app.tmpl(url, {tmplid:cUrl});
 		},
 		defaultValue: {
@@ -118,6 +121,8 @@
 	app.route('service', {
 		type: 'service',
 		url: '{service*}',
+		//如果$site, 加载services/base.js(里面存放基础服务)
+		//如果user/lib , 加载services/user.js(里面存放user相关的服务如: user/lib, user/role)
 		toUrl: function(url, p){
 			var l = url.split('/'),
 			    isBase  = l.length == 1,
