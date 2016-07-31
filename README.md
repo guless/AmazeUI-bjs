@@ -37,10 +37,11 @@ $ npm start
 ```
 ### 目录结构:
 
-│  index.html
-├─demo
-│  │  index.html
-│  │  route.js
+```
+│  index.html 
+├─demo 
+│  │  index.html 
+│  │  route.js 
 │  │  
 │  ├─api
 │  ├─commands
@@ -51,7 +52,7 @@ $ npm start
 └─statics
     ├─AmazeUI
     └─bingo
-            
+```
 
 **index.html**：为首页
 
