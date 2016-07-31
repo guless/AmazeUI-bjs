@@ -8,7 +8,7 @@
 
 ## demo
 
-[在线demo](https://guless.github.io/sandal-bjs/index.html)
+[在线demo](https://guless.github.io/AmazeUI-bjs/index.html)
 
 PS：基于 AmazeUI(amdin) + bingoJS 2.x 实现模块化单页面(SPA)，这里主要演示如何使用bingoJS搭建前端SPA工程，如何定义服务和指令，如果设置route的转发等
 
