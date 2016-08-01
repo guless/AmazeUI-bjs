@@ -1,6 +1,6 @@
 # AmazeUI - admin
 
-基于[AmazeUI - admin](http://amazeui.org/) 模板。
+基于[AmazeUI - admin](http://amazeui.org/examples/admin-index.html) 模板。
 
 # bingoJS 2.x
 
