@@ -23,7 +23,12 @@
         try{
           _opening = true;
           location.hash = 'np='+url;
-         return _app.mainRoute().href(url, ctrl);
+          var view = _app.mainView();
+          view && view.startProg();
+         return _app.mainRoute().href(url, ctrl).then(function(r){
+            view && view.endProg();
+            return r;
+         });
         } finally{
           _opening = false;
         }
