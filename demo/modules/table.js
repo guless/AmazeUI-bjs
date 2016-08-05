@@ -11,7 +11,8 @@
 				var table1 = $view.table1;
 				table1.column = [{
 					name: 'id',
-					title: 'ID'
+					title: 'ID',
+					width:50
 				},{
 					name: 'title',
 					title: '标题',
@@ -20,16 +21,20 @@
 					}
 				},{
 					name: 'type',
-					title: '类别'
+					title: '类别',
+					width:70
 				},{
 					name: 'user',
-					title: '作者'
+					title: '作者',
+					width:80
 				},{
 					name: 'date',
-					title: '修改日期'
+					title: '修改日期',
+					width:180
 				},{
 					name: '',
 					title: '操作',
+					width:230,
 					formatter:function(cellvalue, col, row){
 						return '{{include src="#table_opt" /}}';
 					}

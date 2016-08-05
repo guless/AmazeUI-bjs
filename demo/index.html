@@ -20,12 +20,13 @@
       height: 2px;
       width: 100%;
       position: fixed;
-      top: 53px;
+      top: 52px;
       left: 0;
       z-index: 40;
     }
 
     .pjax-loader-bar .progress {
+      width: 0%;
       height: 2px;
       background: #77b6ff;
       box-shadow: 0 0 10px rgba(119,182,255,0.7);
@@ -44,7 +45,7 @@
   <script type="text/html" id="main">
     {{view controller="index" app="demo" name="main" /}}
     {{index/topbar name="topbar" /}}
-    {{text progress /}}
+    <!-- loading -->
     <div class="pjax-loader-bar"><div class="progress" style="width: [[progress]]%;"></div></div>
     <div class="am-cf admin-main">
       {{index/sidebar name="sidebar" /}}

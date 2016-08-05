@@ -43,7 +43,7 @@
     <tr>
       <th class="table-check"><input type="checkbox" /></th>
       {{for item in column}}
-      <th class="table-title">{{text item.title /}}</th>
+      <th class="table-title" style="width:[[item.width?item.width+'px':'auto']]">{{text item.title /}}</th>
       {{/for}}
     </tr>
     </thead>
