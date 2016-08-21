@@ -9,7 +9,7 @@
 			list: [],
 			$init:function(){
 				for (var i = 0; i<20; i++)
-					_log.list.push(i);
+					_log.list.bgPush(i);
 			}
 		});
 

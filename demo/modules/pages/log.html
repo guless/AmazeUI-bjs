@@ -12,9 +12,7 @@
   <div class="am-g error-log">
     <div class="am-u-sm-12 am-u-sm-centered">
       <pre class="am-pre-scrollable">
-&nbsp;{{for item in log.list}}
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc{{text item_even ? ' - no such file' : '' /}}
-&nbsp;
+{{for item in log.list}}<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc{{text item_even ? ' - no such file' : '' /}}
 {{/for}}
     </pre>
       <p>这里是静态页面展示，使用时结合代码高亮插件</p>
